@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perguntinha 💘</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, #ffe3e3, #e0c3fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .question-container {
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      max-width: 100%;
+      width: 400px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #ff4d6d;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      margin: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 200px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #simBtn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #naoBtn {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    /* Responsividade */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 12px 20px;
+      }
+
+      .question-container {
+        padding: 30px 20px;
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="question-container">
+    <h1>Quer torar comigo Maduzinha? 😳</h1>
+    <button id="simBtn">Sim 🥰</button>
+    <button id="naoBtn">Não 😢</button>
+  </div>
+
+  <script>
+    const simBtn = document.getElementById('simBtn');
+    const naoBtn = document.getElementById('naoBtn');
+
+    let fontSize = 1.2;
+
+    naoBtn.addEventListener('click', () => {
+      fontSize += 0.2;
+      simBtn.style.fontSize = `${fontSize}rem`;
+      simBtn.style.transform = `scale(${1 + (fontSize - 1.2) * 0.3})`;
+    });
+
+    simBtn.addEventListener('click', () => {
+      confetti({
+        particleCount: 200,
+        spread: 160,
+        origin: { y: 0.6 }
+      });
+    });
+  </script>
+</body>
+</html>
